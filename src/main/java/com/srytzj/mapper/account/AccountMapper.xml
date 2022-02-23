@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.srytzj.mapper.account.AccountMapper">
+    <!-- 表示开启默认MyBatis二级缓存
+     eviction: 默认为LRU, 间隔一段时间刷新一次缓存
+     flushInterval: 以毫秒为单位, 配置多少毫秒刷新一次缓存
+     size: 自定义缓存中存储多少个对象
+     readOnly: 默认是只读(true)
+  -->
+    <cache eviction="LRU" flushInterval="60000" size="512" readOnly="true"/>
+    <resultMap id="BaseResultMap" type="com.srytzj.domain.Account">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="username" property="userName" jdbcType="VARCHAR"/>
+        <result column="password" property="passWord" jdbcType="VARCHAR"/>
+        <result column="realname" property="realName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <select id="login" parameterType="string" resultMap="BaseResultMap">
+     select * from account where password=#{passWord} and userName=#{userName};
+    </select>
+
+    <select id="getByUserName" parameterType="string" resultMap="BaseResultMap">
+        select * from account where id =#{id};
+    </select>
+
+</mapper>
