@@ -3,7 +3,7 @@ package com.srytzj.controller.login;
 import com.srytzj.domain.Account;
 import com.srytzj.domain.AccountVo;
 import com.srytzj.service.accountservice.AccountService;
-import com.srytzj.target.PassToken;
+import com.srytzj.annotation.PassToken;
 import com.srytzj.util.JwtUtils;
 import com.srytzj.util.R;
 import org.springframework.beans.factory.annotation.Autowired;
